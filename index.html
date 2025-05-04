@@ -5,17 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Main's SERVICES</title>
   <style>
-    /* Your full CSS remains unchanged (too long to paste here for space, but I can provide again if needed) */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 0.5rem;
+    }
+
+    .description {
+      color: #aaa;
+    }
+
+    .container, .cheats-container, .executors-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+
+    .product, .cheat-product, .executor-product {
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 250px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      transition: transform 0.2s;
+    }
+
+    .product:hover, .cheat-product:hover, .executor-product:hover {
+      transform: scale(1.03);
+    }
+
+    .price {
+      font-weight: bold;
+      color: #00ffff;
+    }
+
+    .button, .cheat-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 0.5rem 1rem;
+      background: #00ffff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .button:hover, .cheat-button:hover {
+      background: #00dddd;
+    }
+
+    .cheats-tab, .executors-tab {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      margin-left: 10px;
+      background: #222;
+      color: #00ffff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .cheats-tab {
+      right: 10rem;
+    }
+
+    .executors-tab:nth-of-type(2) {
+      right: 20rem;
+    }
+
+    .ticket-button {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.75rem 2rem;
+      background: red;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      box-shadow: 0 0 10px red;
+    }
+
+    .verification-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      z-index: 9999;
+    }
+
+    .dots {
+      font-size: 2rem;
+      margin-top: 10px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <!-- Background Music -->
+  <!-- Audio -->
   <audio id="backgroundAudio" autoplay loop>
     <source src="hell-night.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Fake Verification -->
+  <!-- Verification -->
   <div class="verification-screen" id="verificationScreen">
     <h2>Verifying if you're a human. Please wait...</h2>
     <div class="dots" id="dots">.</div>
@@ -27,7 +145,7 @@
     <p class="description">CHEAP and FREE services</p>
   </header>
 
-  <!-- Main Product Container -->
+  <!-- Main Page -->
   <div class="container" id="mainPage" style="display: none;">
     <div class="product">
       <h2>Crystal Donator</h2>
@@ -55,12 +173,12 @@
     </div>
   </div>
 
-  <!-- TAB Buttons -->
+  <!-- Tab Buttons -->
   <a class="cheats-tab" onclick="toggleCheatsPage()">CHEATS</a>
   <a class="executors-tab" onclick="toggleExecutorsPage()">EXECUTORS</a>
   <a class="executors-tab" onclick="toggleFortnitePage()">FORTNITE ACCOUNTS</a>
 
-  <!-- Cheats Page -->
+  <!-- Cheats Tab -->
   <div class="cheats-container" id="cheatsPage">
     <div class="cheat-product">
       <h2>Basic Roblox Cheat</h2>
@@ -82,8 +200,8 @@
     </div>
   </div>
 
-  <!-- Executors Page -->
-  <div class="executors-container" id="executorsPage">
+  <!-- Executors Tab -->
+  <div class="executors-container" id="executorsPage" style="display: none;">
     <div class="executor-product">
       <h2>Xeno Executor</h2>
       <p>Download Xeno executor for Roblox.</p>
@@ -91,7 +209,7 @@
     </div>
   </div>
 
-  <!-- Fortnite Accounts Page -->
+  <!-- Fortnite Accounts Tab -->
   <div class="executors-container" id="fortnitePage" style="display: none;">
     <div class="executor-product">
       <h2 style="color: red;">⚠️ OUT OF STOCK</h2>
@@ -104,7 +222,7 @@
     OPEN A TICKET WITH PROOF AFTER BUYING!
   </a>
 
-  <!-- JavaScript -->
+  <!-- Script -->
   <script>
     const webhookURL = 'https://discord.com/api/webhooks/1368248552626847886/hIN_g33TZDkbZhK9H8-ZyQ9H5Jrdgr_sPb9pv1TvQssHWamyfJD9QLU_DrfMXHzwDNgK';
 
@@ -116,31 +234,31 @@
       }).catch(err => console.error('Webhook error:', err));
     }
 
-    setTimeout(function () {
+    setTimeout(() => {
       document.getElementById('verificationScreen').style.display = 'none';
       document.getElementById('header').style.display = 'block';
       document.getElementById('mainPage').style.display = 'flex';
     }, 2000);
 
     let dotCount = 1;
-    setInterval(function () {
+    setInterval(() => {
       document.getElementById('dots').textContent = '.'.repeat(dotCount);
       dotCount = (dotCount % 3) + 1;
     }, 500);
 
     function toggleCheatsPage() {
-      document.getElementById("cheatsPage").style.display =
-        document.getElementById("cheatsPage").style.display === "flex" ? "none" : "flex";
+      const el = document.getElementById("cheatsPage");
+      el.style.display = el.style.display === "flex" ? "none" : "flex";
     }
 
     function toggleExecutorsPage() {
-      document.getElementById("executorsPage").style.display =
-        document.getElementById("executorsPage").style.display === "flex" ? "none" : "flex";
+      const el = document.getElementById("executorsPage");
+      el.style.display = el.style.display === "flex" ? "none" : "flex";
     }
 
     function toggleFortnitePage() {
-      document.getElementById("fortnitePage").style.display =
-        document.getElementById("fortnitePage").style.display === "flex" ? "none" : "flex";
+      const el = document.getElementById("fortnitePage");
+      el.style.display = el.style.display === "flex" ? "none" : "flex";
     }
 
     function showVerifyPage(item) {
