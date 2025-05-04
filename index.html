@@ -64,7 +64,7 @@
       background: #00dddd;
     }
 
-    .cheats-tab, .executors-tab {
+    .tab-button {
       position: fixed;
       top: 1rem;
       right: 1rem;
@@ -79,15 +79,15 @@
     }
 
     .cheats-tab {
-      right: 20rem;
+      top: 2rem; /* Adjusted positioning */
     }
 
-    .executors-tab:nth-of-type(2) {
-      right: 10rem;
+    .executors-tab {
+      top: 4rem; /* Adjusted positioning */
     }
 
-    .executors-tab:nth-of-type(3) {
-      right: 1rem;
+    .fortnite-tab {
+      top: 6rem; /* Adjusted positioning */
     }
 
     .ticket-button {
@@ -182,9 +182,9 @@
   </div>
 
   <!-- Tab Buttons -->
-  <a class="cheats-tab" onclick="toggleCheatsPage()">CHEATS</a>
-  <a class="executors-tab" onclick="toggleExecutorsPage()">EXECUTORS</a>
-  <a class="executors-tab" onclick="toggleFortnitePage()">FORTNITE ACCOUNTS</a>
+  <a class="tab-button cheats-tab" onclick="toggleCheatsPage()">CHEATS</a>
+  <a class="tab-button executors-tab" onclick="toggleExecutorsPage()">EXECUTORS</a>
+  <a class="tab-button fortnite-tab" onclick="toggleFortnitePage()">FORTNITE ACCOUNTS</a>
 
   <!-- Cheats Tab -->
   <div class="cheats-container" id="cheatsPage">
