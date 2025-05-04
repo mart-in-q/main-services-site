@@ -79,11 +79,15 @@
     }
 
     .cheats-tab {
-      right: 10rem;
+      right: 20rem;
     }
 
     .executors-tab:nth-of-type(2) {
-      right: 20rem;
+      right: 10rem;
+    }
+
+    .executors-tab:nth-of-type(3) {
+      right: 1rem;
     }
 
     .ticket-button {
@@ -123,6 +127,10 @@
     @keyframes blink {
       0%, 100% { opacity: 0; }
       50% { opacity: 1; }
+    }
+
+    #cheatsPage, #executorsPage, #fortnitePage {
+      display: none;
     }
   </style>
 </head>
@@ -201,7 +209,7 @@
   </div>
 
   <!-- Executors Tab -->
-  <div class="executors-container" id="executorsPage" style="display: none;">
+  <div class="executors-container" id="executorsPage">
     <div class="executor-product">
       <h2>Xeno Executor</h2>
       <p>Download Xeno executor for Roblox.</p>
@@ -210,7 +218,7 @@
   </div>
 
   <!-- Fortnite Accounts Tab -->
-  <div class="executors-container" id="fortnitePage" style="display: none;">
+  <div class="executors-container" id="fortnitePage">
     <div class="executor-product">
       <h2 style="color: red;">⚠️ OUT OF STOCK</h2>
       <p>No Fortnite accounts available at the moment.</p>
@@ -247,18 +255,21 @@
     }, 500);
 
     function toggleCheatsPage() {
-      const el = document.getElementById("cheatsPage");
-      el.style.display = el.style.display === "flex" ? "none" : "flex";
+      document.getElementById("cheatsPage").style.display = "flex";
+      document.getElementById("executorsPage").style.display = "none";
+      document.getElementById("fortnitePage").style.display = "none";
     }
 
     function toggleExecutorsPage() {
-      const el = document.getElementById("executorsPage");
-      el.style.display = el.style.display === "flex" ? "none" : "flex";
+      document.getElementById("executorsPage").style.display = "flex";
+      document.getElementById("cheatsPage").style.display = "none";
+      document.getElementById("fortnitePage").style.display = "none";
     }
 
     function toggleFortnitePage() {
-      const el = document.getElementById("fortnitePage");
-      el.style.display = el.style.display === "flex" ? "none" : "flex";
+      document.getElementById("fortnitePage").style.display = "flex";
+      document.getElementById("cheatsPage").style.display = "none";
+      document.getElementById("executorsPage").style.display = "none";
     }
 
     function showVerifyPage(item) {
