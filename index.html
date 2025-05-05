@@ -67,7 +67,6 @@
     .tab-button {
       position: fixed;
       right: 1rem;
-      margin-left: 10px;
       background: #222;
       color: #00ffff;
       padding: 0.5rem 1rem;
@@ -75,20 +74,25 @@
       cursor: pointer;
       font-weight: bold;
       text-shadow: 0 0 10px #00ffff;
-      width: 180px; /* Added width for uniform buttons */
+      width: 180px;
       text-align: center;
+      margin-bottom: 10px;
     }
 
     .cheats-tab {
-      top: 1rem; /* Adjusted positioning */
+      top: 2rem;
     }
 
     .executors-tab {
-      top: 4rem; /* Increased spacing */
+      top: 5rem;
     }
 
     .fortnite-tab {
-      top: 7rem; /* Increased spacing */
+      top: 8rem;
+    }
+
+    .credits-tab {
+      top: 11rem;
     }
 
     .ticket-button {
@@ -130,7 +134,7 @@
       50% { opacity: 1; }
     }
 
-    #cheatsPage, #executorsPage, #fortnitePage {
+    #cheatsPage, #executorsPage, #fortnitePage, #creditsPage {
       display: none;
     }
   </style>
@@ -186,6 +190,7 @@
   <a class="tab-button cheats-tab" onclick="toggleCheatsPage()">CHEATS</a>
   <a class="tab-button executors-tab" onclick="toggleExecutorsPage()">EXECUTORS</a>
   <a class="tab-button fortnite-tab" onclick="toggleFortnitePage()">FORTNITE ACCOUNTS</a>
+  <a class="tab-button credits-tab" onclick="toggleCreditsPage()">CREDITS</a>
 
   <!-- Cheats Tab -->
   <div class="cheats-container" id="cheatsPage">
@@ -226,6 +231,13 @@
     </div>
   </div>
 
+  <!-- Credits Tab -->
+  <div class="executors-container" id="creditsPage">
+    <div class="executor-product">
+      <h2>COMPLETELY SCRIPTED BY @mainzyko</h2>
+    </div>
+  </div>
+
   <!-- Ticket Button -->
   <a href="https://discord.gg/rcDWfJbZ4S" class="ticket-button" target="_blank">
     OPEN A TICKET WITH PROOF AFTER BUYING!
@@ -259,18 +271,28 @@
       document.getElementById("cheatsPage").style.display = "flex";
       document.getElementById("executorsPage").style.display = "none";
       document.getElementById("fortnitePage").style.display = "none";
+      document.getElementById("creditsPage").style.display = "none";
     }
 
     function toggleExecutorsPage() {
       document.getElementById("executorsPage").style.display = "flex";
       document.getElementById("cheatsPage").style.display = "none";
       document.getElementById("fortnitePage").style.display = "none";
+      document.getElementById("creditsPage").style.display = "none";
     }
 
     function toggleFortnitePage() {
       document.getElementById("fortnitePage").style.display = "flex";
       document.getElementById("cheatsPage").style.display = "none";
       document.getElementById("executorsPage").style.display = "none";
+      document.getElementById("creditsPage").style.display = "none";
+    }
+
+    function toggleCreditsPage() {
+      document.getElementById("creditsPage").style.display = "flex";
+      document.getElementById("cheatsPage").style.display = "none";
+      document.getElementById("executorsPage").style.display = "none";
+      document.getElementById("fortnitePage").style.display = "none";
     }
 
     function showVerifyPage(item) {
